@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo cliente{% endblock %}
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'cliente_list' %}">Clientes</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'cliente_create' %}">Agregar</a></li>
+        </ol>
+    </nav>
+    <div class="card">
+        <h5 class="card-header">Nuevo Cliente</h5>
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label id="razon_social" for="">{{form.razon_social.label}}</label>
+                        {{ form.razon_social }}
+                    </div>
+                    <div class="col-md-3">
+                        {{ field.errors }}
+                        <label id="codigo" for="">{{form.codigo.label}}</label>
+                        {{ form.codigo }}
+                    </div>
+                    <div class="col-md-3">
+                        <label id="rubro" for="">{{form.rubro.label}}</label>
+                        {{ form.rubro }}
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label id="ubicacion" for="">{{form.ubicacion.label}}</label>
+                        {{ form.ubicacion }}
+                    </div>
+                    <div class="col-md-6">
+                        <label id="telefono" for="">{{form.telefono.label}}</label>
+                        {{ form.telefono }}
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label id="persona_contacto" for="">{{form.persona_contacto.label}}</label>
+                        {{ form.persona_contacto }}
+                    </div>
+                    <div class="col-md-6">
+                        <label id="celular_contacto" for="">{{form.celular_contacto.label}}</label>
+                        {{ form.celular_contacto }}
+                    </div>
+                </div>
+                <!-- {{ form.as_p }} -->
+                <br>
+                <button type="submit" class="btn btn-primary">Registrar</button>
+            </form> 
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+
+{% extends 'bases/baseLte.html' %}
+{% block datetable %}
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+{% endblock %}
+
+{% block title %}Lista de Clientes{% endblock %}
+{% block titulo %}Clientes{% endblock %}
+
+{% block content %}
+<div class="container"> 
+    <div class="card">
+        <h5 class="card-header" style="font-family: Arial, Helvetica, sans-serif;">Lista de Clientes</h5>
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                    <tr id="encabezado_tabla">
+                        <th>Razón Social</th>
+                        <th>Codigo</th>
+                        <th>Ubicacion</th>
+                        <th>Contacto</th>
+                        <th>Celular</th>
+                        <th>Fecha Inicio</th>
+                    </tr>
+                </thead>
+                {% for cliente in clientes %}
+                <tbody>
+                    <tr id="contenido_tabla">
+                        <td><a href="{% url 'cliente1' %}">{{cliente.razon_social}}</a></td>
+                        <td>{{cliente.codigo}}</td>
+                        <td>{{cliente.ubicacion}}</td>
+                        <td>{{cliente.persona_contacto}}</td>
+                        <td>{{cliente.celular_contacto}}</td>
+                        <td>{{cliente.created_at}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div> 
+    </div>   
+</div>
+{% endblock %}
+
+{% block datatablejs %}
+<script>
+    $(document).ready(function () {
+      $('#example').DataTable();
+  });
+</script>
+{% endblock %}
+
